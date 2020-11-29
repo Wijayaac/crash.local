@@ -15,11 +15,10 @@ class Productseller extends BaseController
 	}
 	public function index()
 	{
-		dd($this->session);
-		// $data = [
-		// 	'products' => $this->productModel->getProduct()
-		// ];
-		// return view('seller/view', $data);
+		$data = [
+			'products' => $this->productModel->getProduct()
+		];
+		return view('seller/view', $data);
 	}
 	public function detail($id)
 	{

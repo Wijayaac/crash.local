@@ -8,7 +8,7 @@
         </h3>
 
         <div class="p-3">
-            <form class="form-horizontal m-t-20" action="login/authseller" method="POST">
+            <form class="form-horizontal m-t-20" action="login/seller" method="POST">
                 <?= csrf_field(); ?>
                 <?php if (session()->getFlashdata('message')) : ?>
                     <div class="alert alert-danger"><?= session()->getFlashdata('message') ?></div>

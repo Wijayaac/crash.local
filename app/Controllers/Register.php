@@ -8,26 +8,25 @@ class Register extends BaseController
 {
     public function index()
     {
-        $data = [];
-        return view('register', $data);
+        return view('register');
     }
     public function save()
     {
         $rules = [
             'sellerName' => 'required|min_length[3]|max_length[20]',
             'sellerEmail' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[sellers.sellerEmail]',
-            'password' => 'required|min_length[6]|max_length[200]',
-            'confirmPassword' => 'matches[password]'
+            'password' => 'required|min_length[6]|max_length[200]'
         ];
         if ($this->validate($rules)) {
             $sellerModel = new Sellermodel();
             $data = [
+                'id' => md5(now()),
                 'sellerName' => $this->request->getVar('sellerName'),
                 'sellerAddress' => $this->request->getVar('sellerAddress'),
                 'sellerEmail' => $this->request->getVar('sellerEmail'),
-                'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
+                'password' => md5($this->request->getVar('password'))
             ];
-            $sellerModel->save($data);
+            $sellerModel->insert($data);
             return redirect()->to('/login');
         } else {
             $data['validation'] = $this->validator;

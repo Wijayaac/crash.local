@@ -12,7 +12,7 @@ class Login extends BaseController
     {
         return view('login');
     }
-    public function authSeller()
+    public function seller()
     {
         $session = session();
         $sellerModel = new Sellermodel();
@@ -21,8 +21,7 @@ class Login extends BaseController
         $data = $sellerModel->where('sellerEmail', $sellerEmail)->first();
         if ($data) {
             $realPassword = $data['password'];
-            $verifyPassword = password_verify($password, $realPassword);
-            if ($verifyPassword) {
+            if ($realPassword == md5($password)) {
                 $sessionData = [
                     'sessionId' => $data['id'],
                     'sessionName' => $data['sellerName'],
@@ -40,7 +39,7 @@ class Login extends BaseController
             return redirect()->to('/login');
         }
     }
-    public function authAdmin()
+    public function admin()
     {
         $session = session();
         $adminModel = new Adminmodel();

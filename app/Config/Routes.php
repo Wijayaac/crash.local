@@ -21,7 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(false);
+$routes->setAutoRoute(true);
 
 /**
  * --------------------------------------------------------------------
@@ -34,9 +34,11 @@ $routes->setAutoRoute(false);
 
 // admin routes
 $routes->get('/', 'Home::index');
+
 $routes->get('register', 'Register::index');
 $routes->get('register/save', 'Register::save');
 $routes->get('login', 'Login::index');
+$routes->get('login/seller', 'Login::seller');
 
 $routes->get('admin/view', 'Productadmin::index');
 $routes->delete('admin/view/(:num)', 'Productadmin::delete/$1');

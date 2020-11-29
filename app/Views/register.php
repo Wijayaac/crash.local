@@ -34,11 +34,6 @@
                         <input class="form-control" type="password" required placeholder="Password" name="password">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-12">
-                        <input class="form-control" type="password" required placeholder="Re-type Password" name="confirmPassword">
-                    </div>
-                </div>
 
                 <div class="form-group text-center row m-t-20">
                     <div class="col-12">

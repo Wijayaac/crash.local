@@ -10,5 +10,5 @@ class Sellermodel extends Model
     protected $primaryKey = 'id';
 
     protected $useTimestamps = true;
-    protected $allowedFields = ['sellerName', 'sellerAddress', 'sellerEmail', 'password', 'created_at', 'updated_at'];
+    protected $allowedFields = ['id', 'sellerName', 'sellerAddress', 'sellerEmail', 'password', 'created_at', 'updated_at'];
 }
