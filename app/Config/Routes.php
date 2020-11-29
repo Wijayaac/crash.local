@@ -21,7 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /**
  * --------------------------------------------------------------------
@@ -31,8 +31,22 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
 
+// admin routes
+$routes->get('/', 'Home::index');
+$routes->get('register', 'Register::index');
+$routes->get('register/save', 'Register::save');
+$routes->get('login', 'Login::index');
+
+$routes->get('admin/view', 'Productadmin::index');
+$routes->delete('admin/view/(:num)', 'Productadmin::delete/$1');
+$routes->get('admin/detail/(:num)', 'Productadmin::detail/$1');
+
+// seller routes
+$routes->get('seller/view', 'Productseller::index', ['filter' => 'auth']);
+$routes->get('seller/create', 'Productseller::create');
+$routes->delete('seller/view/(:num)', 'Productseller::delete/$1');
+$routes->get('seller/detail/(:num)', 'Productseller::detail/$1');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
