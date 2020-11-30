@@ -18,16 +18,16 @@ class Productseller extends BaseController
 		];
 		return view('seller/view', $data);
 	}
-	public function detail($id)
+	public function detail($slug)
 	{
 		$data = [
-			'products' => $this->productModel->getProduct($id)
+			'products' => $this->productModel->getProduct($slug)
 		];
 		if (empty($data['products'])) {
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('This product does not exists');
 		}
-		dd($data);
-		// return view('seller/detail', $data);
+		// dd($data);
+		return view('seller/detail', $data);
 	}
 
 	public function delete($id)
@@ -87,12 +87,12 @@ class Productseller extends BaseController
 			$imageName = $imageFile->getRandomName();
 			$imageFile->move('uploads/', $imageName);
 		}
-		// $data = $this->request->getVar('productName');
-		// dd($data);
+		$slug = url_title($this->request->getVar('productName'), '-', true);
 		$this->productModel->insert(
 			[
 				'id' => md5(now()),
 				'productName' => $this->request->getVar('productName'),
+				'slug' => $slug,
 				'price' => $this->request->getVar('price'),
 				'description' => $this->request->getVar('description'),
 				'statusId' => null,
@@ -100,7 +100,17 @@ class Productseller extends BaseController
 				'sellerId' => session()->get('sessionId'),
 			]
 		);
+		session()->setFlashdata('message', 'Your Product has been added');
 		return redirect()->to('/seller/view');
+	}
+	public function edit($slug)
+	{
+		$data = [
+			'validation' => \Config\Services::validation(),
+			'products' => $this->productModel->getProduct($slug)
+		];
+		dd($data);
+		// return view('/seller/edit');
 	}
 
 	//--------------------------------------------------------------------

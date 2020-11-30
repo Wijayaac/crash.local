@@ -52,6 +52,7 @@ $routes->get('/seller/save', 'Productseller::save', ['filter' => 'auth']);
 $routes->get('seller/view', 'Productseller::index', ['filter' => 'auth']);
 $routes->get('seller/create', 'Productseller::create', ['filter' => 'auth']);
 $routes->delete('seller/view/(:num)', 'Productseller::delete/$1', ['filter' => 'auth']);
+$routes->get('/seller/edit/(:segment)', 'Productseller::edit/$1', ['filter' => 'auth']);
 $routes->get('/seller/detail/(:segment)', 'Productseller::detail/$1', ['filter' => 'auth']);
 /**
  * --------------------------------------------------------------------

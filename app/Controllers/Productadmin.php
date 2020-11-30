@@ -18,10 +18,10 @@ class Productadmin extends BaseController
         ];
         return view('admin/view', $data);
     }
-    public function detail($id)
+    public function detail($slug)
     {
         $data = [
-            'products' => $this->productModel->getProduct($id)
+            'products' => $this->productModel->getProduct($slug)
         ];
         if (empty($data['products'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('This product does not exists');

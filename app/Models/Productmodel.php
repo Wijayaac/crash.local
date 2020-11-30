@@ -10,13 +10,13 @@ class Productmodel extends Model
     protected $primaryKey = 'id';
 
     protected $useTimestamps = true;
-    protected $allowedFields = ['id', 'productName', 'price', 'description', 'image', 'statusId',  'sellerId'];
+    protected $allowedFields = ['id', 'productName', 'slug', 'price', 'description', 'image', 'statusId',  'sellerId'];
 
-    public function getProduct($id = 0)
+    public function getProduct($slug = false)
     {
-        if ($id == 0) {
+        if ($slug == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['slug' => $slug])->first();
     }
 }

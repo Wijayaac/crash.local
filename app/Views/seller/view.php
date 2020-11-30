@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <h4 class="card-title font-20 mt-0"><?= $product['productName']; ?></h4>
                     <p class="card-text"><?= $product['description']; ?></p>
-                    <a href="/seller/detail/<?= $product['id']; ?>" class="btn btn-primary waves-effect waves-light">Details</a>
+                    <a href="/seller/detail/<?= $product['slug']; ?>" class="btn btn-primary waves-effect waves-light">Details</a>
                 </div>
             </div>
         </div>

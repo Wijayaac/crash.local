@@ -17,7 +17,7 @@
             </div>
             <div class="d-inline">
                 <a href="/seller/view" class="btn btn-primary"><i class="mdi mdi-keyboard-backspace"> Back</i></a>
-                <a href="/seller/edit" class="btn btn-warning"><i class="mdi mdi-pencil"> Edit</i></a>
+                <a href="/seller/edit/<?= $products['slug']; ?>" class="btn btn-warning"><i class="mdi mdi-pencil"> Edit</i></a>
                 <form action="/seller/view/<?= $products['id']; ?>" class="d-inline" method="post">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="_method" value="DELETE">
