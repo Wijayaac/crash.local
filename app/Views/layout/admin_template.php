@@ -104,7 +104,7 @@
                                         <h5>Welcome</h5>
                                     </div>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
+                                    <a class="dropdown-item" href="/login/logout"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
                                 </div>
                             </li>
 

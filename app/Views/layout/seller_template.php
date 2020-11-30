@@ -46,7 +46,7 @@
 
                             <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <i class="mdi mdi-email"></i>
+                                    <i class="mdi mdi-email bg-white"></i>
                                     <span class="badge badge-danger noti-icon-badge">5</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
@@ -71,7 +71,7 @@
 
                             <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <i class="mdi mdi-bell"></i>
+                                    <i class="mdi mdi-bell bg-white"></i>
                                     <span class="badge badge-success noti-icon-badge">23</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
@@ -96,7 +96,7 @@
 
                             <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <img src="<?= base_url() ?>/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+                                    <i class="mdi mdi-account-circle bg-white"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                     <!-- item-->
@@ -104,7 +104,7 @@
                                         <h5>Welcome</h5>
                                     </div>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
+                                    <a class="dropdown-item" href="/login/logout"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
                                 </div>
                             </li>
 
@@ -166,9 +166,9 @@
     <script src="<?= base_url() ?>/assets/js/jquery.nicescroll.js"></script>
     <script src="<?= base_url() ?>/assets/js/jquery.scrollTo.min.js"></script>
 
+
     <!-- App js -->
     <script src="<?= base_url() ?>/assets/js/app.js"></script>
-
 </body>
 
 </html>

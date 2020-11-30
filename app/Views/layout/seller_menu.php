@@ -35,7 +35,7 @@
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-table"></i><span> Tables </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="list-unstyled">
                         <li><a href="tables-datatable.html">View Product</a></li>
-                        <li><a href="tables-basic.html">Add Product</a></li>
+                        <li><a href="create">Add Product</a></li>
                     </ul>
                 </li>
 

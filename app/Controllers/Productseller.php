@@ -7,10 +7,8 @@ use App\Models\Productmodel;
 class Productseller extends BaseController
 {
 	protected $productModel;
-	protected $session;
 	public function __construct()
 	{
-		$this->session = session();
 		$this->productModel = new Productmodel();
 	}
 	public function index()
@@ -28,8 +26,8 @@ class Productseller extends BaseController
 		if (empty($data['products'])) {
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('This product does not exists');
 		}
-
-		return view('seller/detail', $data);
+		dd($data);
+		// return view('seller/detail', $data);
 	}
 
 	public function delete($id)
@@ -52,7 +50,8 @@ class Productseller extends BaseController
 	public function create()
 	{
 		$data = [
-			'validation' => \Config\Services::validation()
+			'validation' => \Config\Services::validation(),
+			'session' => session(),
 		];
 
 		return view('seller/create', $data);
@@ -60,6 +59,7 @@ class Productseller extends BaseController
 
 	public function save()
 	{
+
 		if (!$this->validate([
 			'productName' => [
 				'rules' =>  'required|is_unique[Products.productName]',
@@ -87,17 +87,20 @@ class Productseller extends BaseController
 			$imageName = $imageFile->getRandomName();
 			$imageFile->move('uploads/', $imageName);
 		}
-
-		$this->productModel->save(
+		// $data = $this->request->getVar('productName');
+		// dd($data);
+		$this->productModel->insert(
 			[
+				'id' => md5(now()),
 				'productName' => $this->request->getVar('productName'),
 				'price' => $this->request->getVar('price'),
 				'description' => $this->request->getVar('description'),
+				'statusId' => null,
 				'image' => $imageName,
-				'sellerId' => $this->request->getVar('sellerId'),
+				'sellerId' => session()->get('sessionId'),
 			]
 		);
-		return redirect()->to('seller/view');
+		return redirect()->to('/seller/view');
 	}
 
 	//--------------------------------------------------------------------

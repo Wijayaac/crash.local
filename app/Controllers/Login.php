@@ -12,7 +12,7 @@ class Login extends BaseController
     {
         return view('login');
     }
-    public function seller()
+    public function sellerAuth()
     {
         $session = session();
         $sellerModel = new Sellermodel();
@@ -41,31 +41,34 @@ class Login extends BaseController
     }
     public function admin()
     {
+        return view('admin/login');
+    }
+    public function adminAuth()
+    {
         $session = session();
         $adminModel = new Adminmodel();
-        $adminEmail = $this->request->getVar('adminEmail');
+        $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
-        $data = $adminModel->where('adminEmail', $adminEmail)->first();
+        $data = $adminModel->where('username', $username)->first();
         if ($data) {
             $realPassword = $data['password'];
-            $verifyPassword = password_verify($password, $realPassword);
-            if ($verifyPassword) {
+            if ($realPassword == md5($password)) {
                 $sessionData = [
                     'sessionId' => $data['id'],
                     'sessionUser' => $data['username'],
-                    'sessionName' => $data['sellerName'],
-                    'sessionEmail' => $data['sellerEmail'],
+                    'sessionName' => $data['adminName'],
+                    'sessionEmail' => $data['adminEmail'],
                     'sessionLogin' => TRUE
                 ];
                 $session->set($sessionData);
                 return redirect()->to('/admin/view');
             } else {
                 $session->setFlashdata('message', 'Incorrect password. Try Again');
-                return redirect()->to('/login');
+                return redirect()->to('/login/admin');
             }
         } else {
             $session->setFlashdata('message', 'Incorrect email. Try Again');
-            return redirect()->to('/login');
+            return redirect()->to('/login/admin');
         }
     }
     public function logout()

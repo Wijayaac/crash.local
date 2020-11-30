@@ -35,20 +35,24 @@ $routes->setAutoRoute(true);
 // admin routes
 $routes->get('/', 'Home::index');
 
+// Login and register routes
 $routes->get('register', 'Register::index');
 $routes->get('register/save', 'Register::save');
 $routes->get('login', 'Login::index');
-$routes->get('login/seller', 'Login::seller');
-
-$routes->get('admin/view', 'Productadmin::index');
-$routes->delete('admin/view/(:num)', 'Productadmin::delete/$1');
-$routes->get('admin/detail/(:num)', 'Productadmin::detail/$1');
+$routes->get('login/seller', 'Login::sellerauth');
+$routes->get('login/adminauth', 'Login::adminauth');
 
 // seller routes
+$routes->get('admin/view', 'Productadmin::index', ['filter' => 'authadmin']);
+$routes->delete('admin/view/(:num)', 'Productadmin::delete/$1', ['filter' => 'authadmin']);
+$routes->get('admin/detail/(:segment)', 'Productadmin::detail/$1', ['filter' => 'authadmin']);
+
+// seller routes
+$routes->get('/seller/save', 'Productseller::save', ['filter' => 'auth']);
 $routes->get('seller/view', 'Productseller::index', ['filter' => 'auth']);
-$routes->get('seller/create', 'Productseller::create');
-$routes->delete('seller/view/(:num)', 'Productseller::delete/$1');
-$routes->get('seller/detail/(:num)', 'Productseller::detail/$1');
+$routes->get('seller/create', 'Productseller::create', ['filter' => 'auth']);
+$routes->delete('seller/view/(:num)', 'Productseller::delete/$1', ['filter' => 'auth']);
+$routes->get('/seller/detail/(:segment)', 'Productseller::detail/$1', ['filter' => 'auth']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing
