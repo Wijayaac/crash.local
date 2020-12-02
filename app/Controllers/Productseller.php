@@ -80,7 +80,6 @@ class Productseller extends BaseController
 			return redirect()->to('create')->withInput();
 		}
 		$imageFile = $this->request->getFile('image');
-
 		if ($imageFile->getError() == 4) {
 			$imageName = 'default.jpg';
 		} else {
@@ -109,8 +108,66 @@ class Productseller extends BaseController
 			'validation' => \Config\Services::validation(),
 			'products' => $this->productModel->getProduct($slug)
 		];
-		dd($data);
-		// return view('/seller/edit');
+		return view('/seller/edit', $data);
+	}
+	public function update($id)
+	{
+		$oldProduct = $this->productModel->getProduct($this->request->getVar('slug'));
+		if ($oldProduct['productName'] == $this->request->getVar('productName')) {
+			$ruleName = 'required';
+		} else {
+			$ruleName = 'required|is_unique[Products.productName]';
+		}
+
+		if (!$this->validate([
+			'productName' => [
+				'rules' => $ruleName,
+				'errors' => [
+					'is_unique' => '*{field} already available please sell other product ',
+					'required' => '*{field} must inserted ',
+				]
+			],
+			'image' => [
+				'rules' => 'max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
+				'errors' => [
+					'max_size' => 'Product image is to large, max 1mb',
+					'is_image' => 'Please just upload proper image png/jpg',
+					'mime_in' => 'Please just upload proper image png/jpg'
+				]
+			]
+		])) {
+			return redirect()->to('/seller/edit/' . $this->request->getVar('slug'))->withInput();
+		}
+
+		$imageFile = $this->request->getFile('image');
+
+		if ($imageFile->getError() == 4) {
+			$imageName = $this->request->getVar('oldImage');
+		} elseif ($this->request->getVar('oldImage') != 'default.jpg') {
+			unlink('uploads/' . $this->request->getVar('oldImage'));
+
+			$imageName = $imageFile->getRandomName();
+			$imageFile->move('uploads/', $imageName);
+		} else {
+			$imageName = $imageFile->getRandomName();
+			$imageFile->move('uploads/', $imageName);
+		}
+
+		$slug = url_title($this->request->getVar('productName'), '-', true);
+
+		$this->productModel->update($id, [
+
+			'productName' => $this->request->getVar('productName'),
+			'slug' => $slug,
+			'price' => $this->request->getVar('price'),
+			'description' => $this->request->getVar('description'),
+			'statusId' => null,
+			'image' => $imageName,
+
+		]);
+		session()->setFlashdata('message', 'Your Product has been updated');
+
+		return redirect()->to('/seller/view');
 	}
 
 	//--------------------------------------------------------------------

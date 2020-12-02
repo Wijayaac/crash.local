@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-sm-8 mx-auto">
         <h2 class="my3">Add Your Product</h2>
-        <form action="/Productseller/save" method="post" enctype="multipart/form-data">
+        <form action="/productseller/save" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <div class="form-group">
                 <label>Product Name</label>
@@ -28,7 +28,7 @@
                         Submit
                     </button>
                     <button type="reset" class="btn btn-secondary waves-effect m-l-5">
-                        Cancel
+                        Resset
                     </button>
                 </div>
             </div>

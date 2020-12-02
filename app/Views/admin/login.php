@@ -34,7 +34,7 @@
                 <div class="form-group m-t-10 mb-0 row text-center">
                     <div class="col-sm-5 m-t-20 mx-auto">
                         <a href="register" class="text-muted my-3"><i class="mdi mdi-account-circle"></i> <small>Create an account ?</small></a>
-                        <a href="login" class="text-muted"><i class="mdi mdi-lock"></i> <small>Login Seller</small></a>
+                        <a href="/login" class="text-muted"><i class="mdi mdi-lock"></i> <small>Login Seller</small></a>
                     </div>
                 </div>
             </form>

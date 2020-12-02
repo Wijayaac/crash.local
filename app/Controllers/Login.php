@@ -67,7 +67,7 @@ class Login extends BaseController
                 return redirect()->to('/login/admin');
             }
         } else {
-            $session->setFlashdata('message', 'Incorrect email. Try Again');
+            $session->setFlashdata('message', 'Incorrect username. Try Again');
             return redirect()->to('/login/admin');
         }
     }
