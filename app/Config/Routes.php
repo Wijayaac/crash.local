@@ -32,7 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-// admin routes
+// client routes
 $routes->get('/', 'Home::index');
 
 // Login and register routes
@@ -42,9 +42,10 @@ $routes->get('login', 'Login::index');
 $routes->get('login/seller', 'Login::sellerauth');
 $routes->get('login/adminauth', 'Login::adminauth');
 
-// seller routes
+// admin routes
 $routes->get('admin/view', 'Productadmin::index', ['filter' => 'authadmin']);
 $routes->delete('admin/view/(:num)', 'Productadmin::delete/$1', ['filter' => 'authadmin']);
+$routes->get('admin/approve/(:segment)', 'Productadmin::approve/$1', ['filter' => 'authadmin']);
 $routes->get('admin/detail/(:segment)', 'Productadmin::detail/$1', ['filter' => 'authadmin']);
 
 // seller routes

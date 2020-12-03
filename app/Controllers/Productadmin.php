@@ -46,6 +46,18 @@ class Productadmin extends BaseController
 
         return redirect()->to('/admin/view');
     }
+    public function approve($id)
+    {
+        $this->productModel->update(
+            $id,
+            [
+                'statusId' => 1
+            ]
+        );
+        session()->setFlashdata('message', '1 Product has been approve');
+
+        return redirect()->to('/admin/view');
+    }
 
     //--------------------------------------------------------------------
 

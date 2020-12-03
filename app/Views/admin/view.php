@@ -6,11 +6,11 @@
         <div class="col-lg-3">
             <!-- Simple card -->
             <div class="card m-b-30">
-                <img class="card-img-top d-flex align-self-center img-fluid" style="max-width:50%" src="<?= base_url(); ?>/uploads/<?= $product['image']; ?>" alt="Card image cap">
+                <img class="card-img-top d-flex align-self-center img-fluid my-3" style="max-width:50%" src="<?= base_url(); ?>/uploads/<?= $product['image']; ?>" alt="Card image cap">
                 <div class="card-body">
                     <h4 class="card-title font-20 mt-0"><?= $product['productName']; ?></h4>
                     <p class="card-text"><?= $product['description']; ?></p>
-                    <a href="/admin/detail/<?= $product['id']; ?>" class="btn btn-primary waves-effect waves-light">Details</a>
+                    <a href="/admin/detail/<?= $product['slug']; ?>" class="btn btn-primary waves-effect waves-light">Details</a>
                 </div>
             </div>
         </div>
