@@ -44,7 +44,7 @@ $routes->get('login/adminauth', 'Login::adminauth');
 
 // admin routes
 $routes->get('admin/view', 'Productadmin::index', ['filter' => 'authadmin']);
-$routes->delete('admin/view/(:num)', 'Productadmin::delete/$1', ['filter' => 'authadmin']);
+$routes->delete('admin/view/(:segment)', 'Productadmin::delete/$1', ['filter' => 'authadmin']);
 $routes->get('admin/approve/(:segment)', 'Productadmin::approve/$1', ['filter' => 'authadmin']);
 $routes->get('admin/detail/(:segment)', 'Productadmin::detail/$1', ['filter' => 'authadmin']);
 
@@ -52,7 +52,7 @@ $routes->get('admin/detail/(:segment)', 'Productadmin::detail/$1', ['filter' => 
 $routes->get('seller/view', 'Productseller::index', ['filter' => 'auth']);
 $routes->get('/productseller/save', 'Productseller::save', ['filter' => 'auth']);
 $routes->get('seller/create', 'Productseller::create', ['filter' => 'auth']);
-$routes->delete('seller/view/(:num)', 'Productseller::delete/$1', ['filter' => 'auth']);
+$routes->delete('seller/view/(:segment)', 'Productseller::delete/$1', ['filter' => 'auth']);
 $routes->get('/productseller/update/(:any)', 'Productseller::update/$1', ['filter' => 'auth']);
 $routes->get('/seller/edit/(:segment)', 'Productseller::edit/$1', ['filter' => 'auth']);
 $routes->get('/seller/detail/(:segment)', 'Productseller::detail/$1', ['filter' => 'auth']);

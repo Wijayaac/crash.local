@@ -4,19 +4,19 @@
 <div class="row">
     <div class="col-sm-8 mx-auto">
         <h2 class="my3">Add Your Product</h2>
-        <form action="/productseller/save" method="post" enctype="multipart/form-data">
+        <form action="<?= site_url('productseller/save'); ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <div class="form-group">
                 <label>Product Name</label>
-                <input type="text" name="productName" class="form-control" required placeholder="eg. T-shirt Blue" />
+                <input type="text" name="productName" class="form-control" required placeholder="eg. T-shirt Blue" required />
             </div>
             <div class="form-group">
                 <label>Price</label>
-                <input type="text" name="price" class="form-control" required placeholder="eg. 10000" />
+                <input type="number" name="price" class="form-control" required placeholder="eg. 10000" required />
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <input type="text" name="description" class="form-control" required placeholder="eg. This t-shirt blablabla.." />
+                <input type="text" name="description" class="form-control" required placeholder="eg. This t-shirt blablabla.." required />
             </div>
             <div class="form-group">
                 <label for="">Product Image</label>

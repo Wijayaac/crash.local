@@ -22,7 +22,7 @@
                 <li class="menu-title">Main</li>
 
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="<?= site_url('admin/selling'); ?>" class="waves-effect">
                         <i class="mdi mdi-apple-airplay"></i>
                         <span> Dashboard <span class="badge badge-pill badge-primary float-right">7</span></span>
                     </a>
@@ -30,20 +30,18 @@
 
                 <li class="menu-title">Product</li>
 
-
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-table"></i><span> Tables </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-table"></i><span> Product </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="tables-datatable.html">View Product</a></li>
+                        <li><a href="<?= site_url('admin/view'); ?>">View Product</a></li>
                     </ul>
                 </li>
 
                 <li class="menu-title">Sales Report</li>
-
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-map-marker-multiple"></i><span> Maps </span> <span class="badge badge-pill badge-danger float-right">2</span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-bar"></i><span> Selling </span> <span class="badge badge-pill badge-danger float-right">2</span></a>
                     <ul class="list-unstyled">
-                        <li><a href="maps-google.html">Selling Stats</a></li>
+                        <li><a href="<?= site_url('admin/selling'); ?>">Selling Stats</a></li>
                     </ul>
                 </li>
             </ul>

@@ -8,7 +8,7 @@
             <i class="mdi mdi-lock ml-3"></i>
         </h3>
         <div class="p-3">
-            <form class="form-horizontal m-t-20" action="/login/sellerAuth" method="POST">
+            <form class="form-horizontal m-t-20" action="<?= site_url('login/sellerAuth'); ?>" method="POST">
                 <?= csrf_field(); ?>
                 <?php if (session()->getFlashdata('message')) : ?>
                     <div class="alert alert-danger"><?= session()->getFlashdata('message') ?></div>

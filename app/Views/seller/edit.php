@@ -11,7 +11,7 @@
             <input type="hidden" name="oldImage" value="<?= $products['image']; ?>">
             <div class="form-group">
                 <label for="namaProduk">
-                    Nama Produk
+                    Product Name
                 </label>
                 <input type="text" class="form-control <?= ($validation->hasError('productName')) ? 'is-invalid' : ''; ?>" name="productName" autofocus value="<?= (old('productName')) ? old('productName') : $products['productName']; ?>">
                 <div class="invalid-feedback">
@@ -20,18 +20,18 @@
             </div>
             <div class="form-group">
                 <label for="deksripsi">
-                    Deskripsi Produk
+                    Product Price
                 </label>
-                <input type="text" class="form-control" name="price" value="<?= (old('price')) ? old('price') : $products['price']; ?>">
+                <input type="number" class="form-control" name="price" value="<?= (old('price')) ? old('price') : $products['price']; ?>">
             </div>
             <div class="form-group">
                 <label for="deksripsi">
-                    Deskripsi Produk
+                    Description
                 </label>
                 <input type="text" class="form-control" name="description" value="<?= (old('description')) ? old('description') : $products['description']; ?>">
             </div>
             <div class="form-group">
-                <label for="image">Foto Produk</label>
+                <label for="image">Product Image</label>
                 <input type="file" class="form-control <?= ($validation->hasError('image')) ? 'is-invalid' : ''; ?>" name="image">
                 <div class="invalid-feedback">
                     <?= $validation->getError('image'); ?>
