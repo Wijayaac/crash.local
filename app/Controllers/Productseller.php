@@ -14,14 +14,15 @@ class Productseller extends BaseController
 	public function index()
 	{
 		$data = [
-			'products' => $this->productModel->getProduct()
+			'products'	=> $this->productModel->getProduct()
 		];
 		return view('seller/view', $data);
 	}
 	public function detail($slug)
 	{
 		$data = [
-			'products' => $this->productModel->getProduct($slug)
+			'products' 	=> $this->productModel->getProduct($slug),
+			'details' 	=> $this->productModel->getDetails($slug)
 		];
 		if (empty($data['products'])) {
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('This product does not exists');
@@ -35,7 +36,11 @@ class Productseller extends BaseController
 		$product = $this->productModel->find($id);
 
 		if ($product['image'] != 'default.jpg') {
-			unlink(['uploads/' . $product['image']]);
+			foreach ($product as $file) {
+				if (file_exists($file)) {
+					unlink('uploads/' . $file['image']);
+				}
+			}
 		} else {
 			$this->productModel->delete($id);
 		}
@@ -50,8 +55,8 @@ class Productseller extends BaseController
 	public function create()
 	{
 		$data = [
-			'validation' => \Config\Services::validation(),
-			'session' => session(),
+			'validation' 	=> \Config\Services::validation(),
+			'session' 		=> session(),
 		];
 
 		return view('seller/create', $data);
@@ -62,18 +67,18 @@ class Productseller extends BaseController
 
 		if (!$this->validate([
 			'productName' => [
-				'rules' =>  'required|is_unique[Products.productName]',
-				'errors' => [
-					'required' =>  '*{field} must inserted',
+				'rules' 	=>  'required|is_unique[Products.productName]',
+				'errors' 	=> [
+					'required' 	=>  '*{field} must inserted',
 					'is_unique' => '*{field} is already available, please insert another product'
 				]
 			],
 			'image' => [
-				'rules' => 'max_size[image,1024]|is_image[image]|mime_in[image,image/jpeg,image/png,image/jpg]',
-				'errors' => [
-					'max_size' => '*{field} is to large, maximum 1 mb',
-					'is_image' => '*{field} upload product image',
-					'mime_in' => '*{field} upload product image'
+				'rules' 	=> 'max_size[image,1024]|is_image[image]|mime_in[image,image/jpeg,image/png,image/jpg]',
+				'errors' 	=> [
+					'max_size' 	=> '*{field} is to large, maximum 1 mb',
+					'is_image' 	=> '*Please just upload proper image png/jpg',
+					'mime_in' 	=> '*Please just upload proper image png/jpg'
 				]
 			]
 		])) {
@@ -86,17 +91,25 @@ class Productseller extends BaseController
 			$imageName = $imageFile->getRandomName();
 			$imageFile->move('uploads/', $imageName);
 		}
-		$slug = url_title($this->request->getVar('productName'), '-', true);
+
+		$slug 			= url_title($this->request->getVar('productName'), '-', true);
+		$id				= md5(now());
+		$name			= $this->request->getVar('productName');
+		$price			= $this->request->getVar('price');
+		$description	= $this->request->getVar('description');
+		$status			= 0;
+		$seller			= session()->get('sessionId');
+
 		$this->productModel->insert(
 			[
-				'id' => md5(now()),
-				'productName' => $this->request->getVar('productName'),
-				'slug' => $slug,
-				'price' => $this->request->getVar('price'),
-				'description' => $this->request->getVar('description'),
-				'statusId' => null,
-				'image' => $imageName,
-				'sellerId' => session()->get('sessionId'),
+				'id' 			=> $id,
+				'productName' 	=> $name,
+				'slug' 			=> $slug,
+				'price' 		=> $price,
+				'description' 	=> $description,
+				'statusId' 		=> $status,
+				'image' 		=> $imageName,
+				'sellerId' 		=> $seller
 			]
 		);
 		session()->setFlashdata('message', 'Your Product has been added');
@@ -113,7 +126,9 @@ class Productseller extends BaseController
 	public function update($id)
 	{
 		$oldProduct = $this->productModel->getProduct($this->request->getVar('slug'));
-		if ($oldProduct['productName'] == $this->request->getVar('productName')) {
+		$newProduct = $this->request->getVar('productName');
+
+		if ($oldProduct['productName'] == $newProduct) {
 			$ruleName = 'required';
 		} else {
 			$ruleName = 'required|is_unique[Products.productName]';
@@ -121,18 +136,18 @@ class Productseller extends BaseController
 
 		if (!$this->validate([
 			'productName' => [
-				'rules' => $ruleName,
-				'errors' => [
+				'rules' 	=> $ruleName,
+				'errors' 	=> [
 					'is_unique' => '*{field} already available please sell other product ',
-					'required' => '*{field} must inserted ',
+					'required' 	=> '*{field} must inserted ',
 				]
 			],
 			'image' => [
-				'rules' => 'max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
-				'errors' => [
-					'max_size' => 'Product image is to large, max 1mb',
-					'is_image' => 'Please just upload proper image png/jpg',
-					'mime_in' => 'Please just upload proper image png/jpg'
+				'rules' 	=> 'max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
+				'errors' 	=> [
+					'max_size' 	=> 'Product image is to large, max 1mb',
+					'is_image' 	=> 'Please just upload proper image png/jpg',
+					'mime_in' 	=> 'Please just upload proper image png/jpg'
 				]
 			]
 		])) {
@@ -154,15 +169,20 @@ class Productseller extends BaseController
 		}
 
 		$slug = url_title($this->request->getVar('productName'), '-', true);
+		$name			= $this->request->getVar('productName');
+		$price			= $this->request->getVar('price');
+		$description	= $this->request->getVar('description');
+		$status			= 0;
+
 
 		$this->productModel->update($id, [
 
-			'productName' => $this->request->getVar('productName'),
-			'slug' => $slug,
-			'price' => $this->request->getVar('price'),
-			'description' => $this->request->getVar('description'),
-			'statusId' => null,
-			'image' => $imageName,
+			'productName' 	=> $name,
+			'slug' 			=> $slug,
+			'price' 		=> $price,
+			'description' 	=> $description,
+			'statusId' 		=> $status,
+			'image' 		=> $imageName,
 
 		]);
 		session()->setFlashdata('message', 'Your Product has been updated');

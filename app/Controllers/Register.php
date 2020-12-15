@@ -13,18 +13,25 @@ class Register extends BaseController
     public function save()
     {
         $rules = [
-            'sellerName' => 'required|min_length[3]|max_length[20]',
-            'sellerEmail' => 'required|min_length[6]|max_length[50]|valid_email|is_unique[sellers.sellerEmail]',
-            'password' => 'required|min_length[6]|max_length[200]'
+            'sellerName'    => 'required|min_length[3]|max_length[20]',
+            'sellerEmail'   => 'required|min_length[6]|max_length[50]|valid_email|is_unique[sellers.sellerEmail]',
+            'password'      => 'required|min_length[6]|max_length[200]'
         ];
         if ($this->validate($rules)) {
             $sellerModel = new Sellermodel();
+
+            $id         = md5(now());
+            $seller     = $this->request->getVar('sellerName');
+            $address    = $this->request->getVar('sellerAddress');
+            $email      = $this->request->getVar('sellerEmail');
+            $password   = md5($this->request->getVar('password'));
+
             $data = [
-                'id' => md5(now()),
-                'sellerName' => $this->request->getVar('sellerName'),
-                'sellerAddress' => $this->request->getVar('sellerAddress'),
-                'sellerEmail' => $this->request->getVar('sellerEmail'),
-                'password' => md5($this->request->getVar('password'))
+                'id'            => $id,
+                'sellerName'    => $seller,
+                'sellerAddress' => $address,
+                'sellerEmail'   => $email,
+                'password'      => $password
             ];
             $sellerModel->insert($data);
             return redirect()->to('/login');

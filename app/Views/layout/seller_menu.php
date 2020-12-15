@@ -42,7 +42,7 @@
                 <li class="menu-title">Sales Report</li>
 
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-bar"></i><span> Maps </span> <span class="badge badge-pill badge-danger float-right">2</span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-bar"></i><span> Sales </span> <span class="badge badge-pill badge-danger float-right">2</span></a>
                     <ul class="list-unstyled">
                         <li><a href="<?= site_url('seller/selling'); ?>">Selling Stats</a></li>
                     </ul>

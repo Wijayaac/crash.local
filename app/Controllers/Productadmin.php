@@ -21,7 +21,8 @@ class Productadmin extends BaseController
     public function detail($slug)
     {
         $data = [
-            'products' => $this->productModel->getProduct($slug)
+            'products' => $this->productModel->getProduct($slug),
+            'details' => $this->productModel->getDetails($slug)
         ];
         if (empty($data['products'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('This product does not exists');
@@ -35,7 +36,11 @@ class Productadmin extends BaseController
         $product = $this->productModel->find($id);
 
         if ($product['image'] != 'default.jpg') {
-            unlink(['uploads/' . $product['image']]);
+            foreach ($product as $file) {
+                if (file_exists($file)) {
+                    unlink(base_url() . 'public/uploads' . $file['image']);
+                }
+            }
         } else {
             $this->productModel->delete($id);
         }

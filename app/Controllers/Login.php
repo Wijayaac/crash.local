@@ -14,19 +14,20 @@ class Login extends BaseController
     }
     public function sellerAuth()
     {
-        $session = session();
-        $sellerModel = new Sellermodel();
-        $sellerEmail = $this->request->getVar('sellerEmail');
-        $password = $this->request->getVar('password');
-        $data = $sellerModel->where('sellerEmail', $sellerEmail)->first();
+        $session        = session();
+        $sellerModel    = new Sellermodel();
+        $sellerEmail    = $this->request->getVar('sellerEmail');
+        $password       = $this->request->getVar('password');
+        $data           = $sellerModel->where('sellerEmail', $sellerEmail)->first();
+
         if ($data) {
             $realPassword = $data['password'];
             if ($realPassword == md5($password)) {
                 $sessionData = [
-                    'sessionId' => $data['id'],
-                    'sessionName' => $data['sellerName'],
-                    'sessionEmail' => $data['sellerEmail'],
-                    'sessionLogin' => TRUE
+                    'sessionId'     => $data['id'],
+                    'sessionName'   => $data['sellerName'],
+                    'sessionEmail'  => $data['sellerEmail'],
+                    'sessionLogin'  => TRUE
                 ];
                 $session->set($sessionData);
                 return redirect()->to('/seller/view');
@@ -45,20 +46,20 @@ class Login extends BaseController
     }
     public function adminAuth()
     {
-        $session = session();
-        $adminModel = new Adminmodel();
-        $username = $this->request->getVar('username');
-        $password = $this->request->getVar('password');
-        $data = $adminModel->where('username', $username)->first();
+        $session        = session();
+        $adminModel     = new Adminmodel();
+        $username       = $this->request->getVar('username');
+        $password       = $this->request->getVar('password');
+        $data           = $adminModel->where('username', $username)->first();
         if ($data) {
             $realPassword = $data['password'];
             if ($realPassword == md5($password)) {
                 $sessionData = [
-                    'sessionId' => $data['id'],
-                    'sessionUser' => $data['username'],
-                    'sessionName' => $data['adminName'],
-                    'sessionEmail' => $data['adminEmail'],
-                    'sessionLogin' => TRUE
+                    'sessionId'     => $data['id'],
+                    'sessionUser'   => $data['username'],
+                    'sessionName'   => $data['adminName'],
+                    'sessionEmail'  => $data['adminEmail'],
+                    'sessionLogin'  => TRUE
                 ];
                 $session->set($sessionData);
                 return redirect()->to('/admin/view');

@@ -19,4 +19,9 @@ class Productmodel extends Model
         }
         return $this->where(['slug' => $slug])->first();
     }
+
+    public function getDetails($slug)
+    {
+        return $this->query("SELECT * FROM StatusProduct JOIN sellers JOIN Products ON StatusProduct.id = Products.statusId WHERE Products.slug = '" . $slug . "' LIMIT 1");
+    }
 }

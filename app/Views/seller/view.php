@@ -1,6 +1,17 @@
 <?= $this->extend('layout/seller_template'); ?>
 
 <?= $this->section('content') ?>
+<?php if (session()->getFlashdata('message') == true) : ?>
+    <div class='alert alert-success alert-dismissible fade show text-white mt-1' role='alert'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true' class="text-black">'&times;'</span>
+            <span class='sr-only'>Close</span>
+        </button>
+        <strong>Success</strong> <?= session()->getFlashdata('message'); ?>
+    </div>
+<?php else : ?>
+
+<?php endif; ?>
 <div class="row mt-5">
     <?php foreach ($products as $product) : ?>
         <div class="col-lg-3">

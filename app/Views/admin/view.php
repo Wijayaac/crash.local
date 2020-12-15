@@ -2,6 +2,17 @@
 
 <?= $this->section('content') ?>
 <div class="row mt-5">
+    <?php if (session()->getFlashdata('message') == true) : ?>
+        <div class='alert alert-primary alert-dismissible fade show' role='alert'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>'&times;'</span>
+                <span class='sr-only'>Close</span>
+            </button>
+            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        </div>
+    <?php else : ?>
+
+    <?php endif; ?>
     <?php foreach ($products as $product) : ?>
         <div class="col-lg-3">
             <!-- Simple card -->
