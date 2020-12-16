@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 
 // client routes
 $routes->get('/', 'Home::index');
+$routes->get('/home/detail/(:segment)', 'Home::detail/$1');
 
 // Login and register routes
 $routes->get('register', 'Register::index');

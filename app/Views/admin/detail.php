@@ -15,11 +15,11 @@
             <div class="col-sm-6 text-left">
                 <p class="card-text">Price : <?= number_to_currency($products['price'], 'IDR'); ?></p>
                 <p class="card-text">Description : <?= $products['description']; ?></p>
-                <p class="card-text">Seller Email : <?= $details['sellerEmail']; ?></p>
+                <p class="card-text">Seller Name : <?= $details['sellerName']; ?></p>
                 <p class="card-text text-capitalize">Status : <?= $details['statusName']; ?></p>
                 <div class="d-inline">
                     <a href="/seller/view" class="btn btn-primary"><i class="mdi mdi-keyboard-backspace"> Back</i></a>
-                    <a href="/admin/approve/<?= $products['id']; ?>" class="btn btn-success <?= ($products['statusId'] = 1) ? 'd-none' : ''; ?>"><i class="mdi mdi-check"> Approve</i></a>
+                    <a href="/admin/approve/<?= $products['id']; ?>" class="btn btn-success <?= $products['statusId'] == 1 ? 'd-none' : ''; ?>"><i class="mdi mdi-check"> Approve</i></a>
                     <form action="/seller/view/<?= $products['id']; ?>" class="d-inline" method="post">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="_method" value="DELETE">

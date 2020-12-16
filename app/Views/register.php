@@ -43,7 +43,7 @@
 
                 <div class="form-group m-t-10 mb-0 row">
                     <div class="col-12 m-t-20 text-center">
-                        <a href="login" class="text-muted">Already have account? login here</a>
+                        <a href="<?= site_url(); ?>login" class="text-muted">Already have account? login here</a>
                     </div>
                 </div>
             </form>

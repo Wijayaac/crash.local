@@ -13,7 +13,7 @@ class Register extends BaseController
     public function save()
     {
         $rules = [
-            'sellerName'    => 'required|min_length[3]|max_length[20]',
+            'sellerName'    => 'required|min_length[3]|max_length[20]|is_unique[sellers.sellerName]',
             'sellerEmail'   => 'required|min_length[6]|max_length[50]|valid_email|is_unique[sellers.sellerEmail]',
             'password'      => 'required|min_length[6]|max_length[200]'
         ];
