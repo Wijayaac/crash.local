@@ -18,9 +18,9 @@
                 <p class="card-text">Seller Name : <?= $details['sellerName']; ?></p>
                 <p class="card-text text-capitalize">Status : <?= $details['statusName']; ?></p>
                 <div class="d-inline">
-                    <a href="/seller/view" class="btn btn-primary"><i class="mdi mdi-keyboard-backspace"> Back</i></a>
+                    <a href="/admin/view" class="btn btn-primary"><i class="mdi mdi-keyboard-backspace"> Back</i></a>
                     <a href="/admin/approve/<?= $products['id']; ?>" class="btn btn-success <?= $products['statusId'] == 1 ? 'd-none' : ''; ?>"><i class="mdi mdi-check"> Approve</i></a>
-                    <form action="/seller/view/<?= $products['id']; ?>" class="d-inline" method="post">
+                    <form action="/admin/view/<?= $products['id']; ?>" class="d-inline" method="post">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger"><i class="mdi mdi-delete"> Delete </i> </button>

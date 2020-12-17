@@ -15,6 +15,8 @@
     <link href="<?= base_url() ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url() ?>/assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url() ?>/assets/css/style.css" rel="stylesheet" type="text/css">
+    <!-- jQuery -->
+    <script src="<?= base_url() ?>/assets/js/jquery.min.js"></script>
 
 </head>
 
@@ -44,34 +46,10 @@
                         <ul class="list-inline float-right mb-0">
                             <!-- language-->
 
-                            <li class="list-inline-item dropdown notification-list">
-                                <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <i class="mdi mdi-email bg-white"></i>
-                                    <span class="badge badge-danger noti-icon-badge">5</span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
-                                    <!-- item-->
-                                    <div class="dropdown-item noti-title">
-                                        <h5><span class="badge badge-danger float-right">745</span>Messages</h5>
-                                    </div>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon"><img src="<?= base_url() ?>/assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
-                                        <p class="notify-details"><b>Charles M. Jones</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                                    </a>
-
-                                    <!-- All-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        View All
-                                    </a>
-
-                                </div>
-                            </li>
 
                             <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <i class="mdi mdi-bell bg-white"></i>
+                                    <i class="mdi mdi-bell text-warning font-20"></i>
                                     <span class="badge badge-success noti-icon-badge">23</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
@@ -96,7 +74,7 @@
 
                             <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <i class="mdi mdi-account-circle bg-white"></i>
+                                    <i class="mdi mdi-account-circle text-warning font-20"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                     <!-- item-->
@@ -154,7 +132,7 @@
 
 
     <!-- jQuery  -->
-    <script src="<?= base_url() ?>/assets/js/jquery.min.js"></script>
+
     <script src="<?= base_url() ?>/assets/js/popper.min.js"></script>
     <script src="<?= base_url() ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?= base_url() ?>/assets/js/modernizr.min.js"></script>

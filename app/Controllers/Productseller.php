@@ -13,7 +13,8 @@ class Productseller extends BaseController
 	}
 	public function index()
 	{
-		$data = [
+		$data 	= [
+			'id'		=> session()->get('sessionId'),
 			'products'	=> $this->productModel->getProduct()
 		];
 		return view('seller/view', $data);
@@ -168,7 +169,7 @@ class Productseller extends BaseController
 			$imageFile->move('uploads/', $imageName);
 		}
 
-		$slug = url_title($this->request->getVar('productName'), '-', true);
+		$slug 			= url_title($this->request->getVar('productName'), '-', true);
 		$name			= $this->request->getVar('productName');
 		$price			= $this->request->getVar('price');
 		$description	= $this->request->getVar('description');

@@ -14,17 +14,21 @@
 <?php endif; ?>
 <div class="row mt-5">
     <?php foreach ($products as $product) : ?>
-        <div class="col-lg-3">
-            <!-- Simple card -->
-            <div class="card m-b-30">
-                <img class="card-img-top" width="300px" src="<?= base_url(); ?>/uploads/<?= $product['image']; ?>" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title font-20 mt-0 text-capitalize"><?= $product['productName']; ?></h4>
-                    <p class="card-text"><?= $product['description']; ?></p>
-                    <a href="/seller/detail/<?= $product['slug']; ?>" class="btn btn-primary waves-effect waves-light">Details</a>
+        <?php if ($product['sellerId'] == $id) : ?>
+            <div class="col-lg-3">
+                <!-- Simple card -->
+                <div class="card m-b-30">
+                    <img class="card-img-top" width="300px" src="<?= base_url(); ?>/uploads/<?= $product['image']; ?>" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title font-20 mt-0 text-capitalize"><?= $product['productName']; ?></h4>
+                        <p class="card-text"><?= $product['description']; ?></p>
+                        <a href="/seller/detail/<?= $product['slug']; ?>" class="btn btn-primary waves-effect waves-light">Details</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
     <?php endforeach; ?>
+
+
 </div>
 <?= $this->endSection() ?>

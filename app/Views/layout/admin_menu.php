@@ -41,7 +41,7 @@
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-bar"></i><span> Selling </span> <span class="badge badge-pill badge-danger float-right">2</span></a>
                     <ul class="list-unstyled">
-                        <li><a href="<?= site_url('admin/selling'); ?>">Selling Stats</a></li>
+                        <li><a href="<?= site_url('admin/order'); ?>">Selling Stats</a></li>
                     </ul>
                 </li>
             </ul>
