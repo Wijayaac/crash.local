@@ -19,14 +19,6 @@
 
         <div id="sidebar-menu">
             <ul>
-                <li class="menu-title">Main</li>
-
-                <li>
-                    <a href="<?= site_url('seller/selling'); ?>" class="waves-effect">
-                        <i class="mdi mdi-apple-airplay"></i>
-                        <span> Dashboard <span class="badge badge-pill badge-primary float-right">7</span></span>
-                    </a>
-                </li>
 
                 <li class="menu-title">Product</li>
 
@@ -42,7 +34,7 @@
                 <li class="menu-title">Sales Report</li>
 
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-bar"></i><span> Sales </span> <span class="badge badge-pill badge-danger float-right">2</span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-bar"></i><span> Sales </span></a>
                     <ul class="list-unstyled">
                         <li><a href="<?= site_url('seller/report'); ?>">Selling Stats</a></li>
                     </ul>

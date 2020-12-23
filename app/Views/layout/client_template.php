@@ -55,25 +55,14 @@
 
 						<!-- notification-->
 						<li class="list-inline-item dropdown notification-list">
+
 							<a class="nav-link dropdown-toggle arrow-none  waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-								<i class="mdi mdi-bell-outline noti-icon"></i>
-								<span class="badge badge-success noti-icon-badge">21</span>
+								<i class="mdi mdi-account"></i>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
-								<!-- item-->
-								<div class="dropdown-item noti-title">
-									<h5>Notification (3)</h5>
-								</div>
-
-								<!-- item-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									<div class="notify-icon bg-info"><i class="mdi mdi-martini"></i></div>
-									<p class="notify-details"><b>Your item is shipped</b><small class="text-muted">It is a long established fact that a reader will</small></p>
-								</a>
-
 								<!-- All-->
-								<a href="javascript:void(0);" class="dropdown-item notify-item">
-									View All
+								<a href="<?= site_url('login'); ?>" class="dropdown-item notify-item">
+									Login Seller
 								</a>
 
 							</div>
@@ -108,17 +97,7 @@
 					<ul class="navigation-menu">
 
 						<li class="has-submenu">
-							<a href="index.html"><i class="mdi mdi-airplay"></i>Dashboard</a>
-						</li>
-
-						<li class="has-submenu">
-							<a href="#"><i class="mdi mdi-layers"></i>Advanced UI</a>
-							<ul class="submenu">
-								<li><a href="advanced-highlight.html">Highlight</a></li>
-								<li><a href="advanced-rating.html">Rating</a></li>
-								<li><a href="advanced-alertify.html">Alertify</a></li>
-								<li><a href="advanced-rangeslider.html">Range Slider</a></li>
-							</ul>
+							<a href="<?= site_url(); ?>"><i class="mdi mdi-apple-airplay"></i>Home</a>
 						</li>
 
 					</ul>
@@ -148,7 +127,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
-					© 2018 Annex by Mannatthemes.
+					© 2020 CRASH - Creative Art Shop
 				</div>
 			</div>
 		</div>

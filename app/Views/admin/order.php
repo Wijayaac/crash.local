@@ -25,7 +25,7 @@
                                 <td><?= $order['buyerEmail']; ?></td>
                                 <td><?= $order['buyerAddress']; ?></td>
                                 <td><?= $order['sellerName']; ?></td>
-                                <td><?= $order['totalBuy']; ?></td>
+                                <td><?= number_to_currency($order['totalBuy'], 'IDR'); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

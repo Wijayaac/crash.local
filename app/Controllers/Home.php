@@ -56,6 +56,8 @@ class Home extends BaseController
 
 		$item = $this->productModel->getDetails($slug);
 
+		// foreach ($item->getResult('array') as $item) {
+		// }
 		$data = [
 			'item' 		=> $item,
 			'product' 	=> $product,
@@ -64,6 +66,7 @@ class Home extends BaseController
 			'email'		=> $email,
 			'address'	=> $address,
 		];
+		// \var_dump($item);
 		return view('client/payment', $data);
 	}
 

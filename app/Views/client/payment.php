@@ -5,7 +5,7 @@ namespace Midtrans;
 require_once VENDORPATH . '/midtrans/midtrans-php/Midtrans.php';
 
 //Set Your server key
-Config::$serverKey = "SB-Mid-server-_HPSHO0pGS-Mw7SJ0y3zMOSz";
+Config::$serverKey = "your server key here";
 
 // Uncomment for production environment
 // Config::$isProduction = true;
@@ -103,7 +103,7 @@ $snapToken = Snap::getSnapToken($transaction);
     <meta content="Mannatthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- payment script -->
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-VfwdSL3gMJzLbAnT"></script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="your client key here"></script>
     <link rel="shortcut icon" href="<?= base_url() ?>/favicon.ico">
 
     <link href="<?= base_url() ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -114,13 +114,6 @@ $snapToken = Snap::getSnapToken($transaction);
 
 
 <body>
-
-    <!-- Loader -->
-    <div id="preloader">
-        <div id="status">
-            <div class="spinner"></div>
-        </div>
-    </div>
 
     <!-- Navigation Bar-->
     <header id="topnav">
@@ -226,7 +219,8 @@ $snapToken = Snap::getSnapToken($transaction);
 
     <div class="wrapper">
         <div class="container-fluid">
-            <?php foreach ($item->getResult('array') as $item) : ?>
+            <?php foreach ($item->getResult('array') as $item) :
+            ?>
                 <!-- Page-Title -->
                 <div class="row d-flex justify-content-center mt-4">
                     <div class="col-md-8 col-lg-8 col-xl-6">

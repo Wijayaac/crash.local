@@ -25,7 +25,7 @@ class Productmodel extends Model
         if ($slug ==  false) {
             return $this->query("SELECT * FROM StatusProduct JOIN sellers JOIN Products ON StatusProduct.id = Products.statusId WHERE Products.statusId = 1");
         }
-        return $this->query("SELECT * FROM StatusProduct JOIN sellers JOIN Products ON StatusProduct.id = Products.statusId WHERE Products.slug = '" . $slug . "' LIMIT 1");
+        return $this->query("SELECT * FROM StatusProduct JOIN sellers JOIN Products ON StatusProduct.id = Products.statusId WHERE Products.slug = '" . $slug . "'LIMIT 1;");
     }
 
     public function getSellerProduct($id = '')

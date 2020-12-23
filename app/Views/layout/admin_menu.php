@@ -9,7 +9,7 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="text-center">
-            <a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Crash</a>
+            <a href="<?= site_url('admin/view'); ?>" class="logo"><i class="mdi mdi-assistant"></i> Crash</a>
             <!-- <a href="index.html" class="logo"><img src="<?= base_url() ?>/assets/images/logo.png" height="24" alt="logo"></a> -->
         </div>
     </div>
@@ -19,15 +19,6 @@
 
         <div id="sidebar-menu">
             <ul>
-                <li class="menu-title">Main</li>
-
-                <li>
-                    <a href="<?= site_url('admin/selling'); ?>" class="waves-effect">
-                        <i class="mdi mdi-apple-airplay"></i>
-                        <span> Dashboard <span class="badge badge-pill badge-primary float-right">7</span></span>
-                    </a>
-                </li>
-
                 <li class="menu-title">Product</li>
 
                 <li class="has_sub">
@@ -39,7 +30,7 @@
 
                 <li class="menu-title">Sales Report</li>
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-bar"></i><span> Selling </span> <span class="badge badge-pill badge-danger float-right">2</span></a>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-bar"></i><span> Selling </span> </a>
                     <ul class="list-unstyled">
                         <li><a href="<?= site_url('admin/order'); ?>">Selling Stats</a></li>
                     </ul>

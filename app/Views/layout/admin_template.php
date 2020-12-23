@@ -48,28 +48,6 @@
 
 
                             <li class="list-inline-item dropdown notification-list">
-                                <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <i class="mdi mdi-bell text-warning font-20"></i>
-                                    <span class="badge badge-success noti-icon-badge">23</span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
-                                    <!-- item-->
-                                    <div class="dropdown-item noti-title">
-                                        <h5><span class="badge badge-danger float-right">87</span>Notification</h5>
-                                    </div>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
-                                        <p class="notify-details"><b>Your order is placed</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                                    </a>
-
-                                    <!-- All-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        View All
-                                    </a>
-
-                                </div>
                             </li>
 
                             <li class="list-inline-item dropdown notification-list">
@@ -121,7 +99,7 @@
             </div> <!-- content -->
 
             <footer class="footer">
-                © 2018 Crash by Mannatthemes.
+                © 2020 CRASH - Creative Art Shop
             </footer>
 
         </div>
